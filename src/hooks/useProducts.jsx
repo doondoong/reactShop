@@ -8,11 +8,9 @@ export default function useProducts() {
     queryKey: ["products"],
     queryFn: fetchProducts,
   });
-  const addProduct = useMutation(
-    ({ product, url }) => addNewProduct(product, url),
-    {
-      onSuccess: () => queryClient.invalidateQueries(["products"]),
-    }
-  );
+  const addProduct = useMutation({
+    mutationFn: ({ product, url }) => addNewProduct(product, url),
+    onSuccess: () => queryClient.invalidateQueries(["products"]),
+  });
   return { productsQuery, addProduct };
 }

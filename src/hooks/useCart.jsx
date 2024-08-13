@@ -11,16 +11,15 @@ export default function useCart() {
     queryFn: () => getCart(uid),
     enabled: !!uid,
   });
-  const addOrUpdateItem = useMutation(
-    (product) => addOrUpdateToCart(uid, product),
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries(["carts", uid]);
-      },
-    }
-  );
+  const addOrUpdateItem = useMutation({
+    mutationFn: (product) => addOrUpdateToCart(uid, product),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["carts", uid]);
+    },
+  });
 
-  const removeItem = useMutation((id) => removeFromCart(uid, id), {
+  const removeItem = useMutation({
+    mutationFn: (id) => removeFromCart(uid, id),
     onSuccess: () => {
       queryClient.invalidateQueries(["carts", uid]);
     },
