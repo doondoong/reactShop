@@ -13,23 +13,23 @@ import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./pages/ProtectedRoute";
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/reactShop",
     element: <App />,
     errorElement: <NotFound />,
     children: [
-      { index: true, path: "/", element: <Home /> },
-      { path: "/products", element: <AllProducts /> },
+      { index: true, element: <Home /> },
+      { path: "products", element: <AllProducts /> },
       {
-        path: "/products/new",
+        path: "products/new",
         element: (
           <ProtectedRoute requireAdmin>
             <NewProduct />
           </ProtectedRoute>
         ),
       },
-      { path: "/products/:id", element: <ProductDetail /> },
+      { path: "products/:id", element: <ProductDetail /> },
       {
-        path: "/carts",
+        path: "carts",
         element: (
           <ProtectedRoute>
             <MyCart />
