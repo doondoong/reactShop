@@ -13,7 +13,7 @@ import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./pages/ProtectedRoute";
 const router = createBrowserRouter([
   {
-    path: "/reactShop",
+    path: "/",
     element: <App />,
     errorElement: <NotFound />,
     children: [
